@@ -1,18 +1,18 @@
 # Udacity FullStack Final Capstone Project 
 
-# OTT App Backend
+# OTT App Service
 
 ## Summary
 
-This projet is designed to demonstrate the backend api of a simple OTT application. The backend api is designed to work for two types of users: ott user and ott manager. 
+This projet is designed to demonstrate the backend service of a simple OTT application. The backend api is designed to work for two types of users: ott user and ott manager. 
 
 OTT users can view collections for categories such as movies, shows, etc. 
 1. Display available categories.
-2. Display collections - both all categories and by category.
+2. Display collections - for all categories and by individual category.
 
 OTT managers can create, update, delete and view collections for any category. 
 1. Display available categories.
-2. Display collections - both all categories and by category.
+2. Display collections - for all categories and by individual category.
 3. Add collections - movies, shows, etc
 4. Update collections - movies, shows, etc
 5. Delete collections - movies, shows, etc
@@ -360,7 +360,7 @@ A Postman script has also been created for easy testing of these roles. See the 
 
 ## Render Deployment
 
-The backend application has been deployed on Heroku and can be accessed live at
+The backend application has been deployed on Render and can be accessed live at
 ```
-https://movie-app-now.herokuapp.com
+https://ott-app-service.onrender.com
 ```

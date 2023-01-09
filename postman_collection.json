@@ -1,0 +1,1278 @@
+{
+	"info": {
+		"_postman_id": "13443095-b2e5-458d-a31a-e9e195070f92",
+		"name": "udacity-fsnd-capstone",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ott-manager",
+			"item": [
+				{
+					"name": "Create categories-movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"movies\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create categories-shows",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"shows\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"get categories has array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.categories).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create collections-movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = pm.response.json();",
+									"    postman.setEnvironmentVariable(\"movie_id\", jsonData.collection.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"my movie\",\n    \"category\":\"1\",\n    \"rating\":9,\n    \"image_url\":\"123\",\n    \"video_url\":\"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/collections",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create collections-show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"    var jsonData = pm.response.json();",
+									"    postman.setEnvironmentVariable(\"show_id\", jsonData.collection.id);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"my show\",\n    \"category\":\"2\",\n    \"rating\":6,\n    \"image_url\":\"123\",\n    \"video_url\":\"123\",\n    \"seasons\":[\n            {\n                \"name\": \"my season 1\",\n                \"episodes\": 10\n            },\n            {\n                \"name\": \"my season 2\",\n                \"episodes\": 8\n            }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/collections",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collections - all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"get collections has array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.collections).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections?category=all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collections - movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains collections array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.collections).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections?category=movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "movies"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collections - shows",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains collections array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.collections).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections?category=shows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "shows"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update collections - Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/collections/{{movie_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections",
+								"{{movie_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ott-user",
+			"item": [
+				{
+					"name": "Create categories-movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 since credentials are valid, but permission is not present\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"movies\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create categories-shows",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 since credentials are valid, but permission is not present\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"shows\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"get categories has array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.categories).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create collections-movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 since credentials are valid, but permission is not present\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"my movie\",\n    \"category\":\"1\",\n    \"rating\":9,\n    \"image_url\":\"123\",\n    \"video_url\":\"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/collections",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create collections-show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 since credentials are valid, but permission is not present\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"my show\",\n    \"category\":\"2\",\n    \"rating\":6,\n    \"image_url\":\"123\",\n    \"video_url\":\"123\",\n    \"seasons\":[\n            {\n                \"name\": \"my season 1\",\n                \"episodes\": 10\n            },\n            {\n                \"name\": \"my season 2\",\n                \"episodes\": 8\n            }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/collections",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collections - all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"get collections has array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.collections).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections?category=all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collections - movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains collections array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.collections).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections?category=movies",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "movies"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collections - shows",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"value contains collections array\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.collections).to.be.an('array')",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections?category=shows",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "shows"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update collections - Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 since credentials are valid, but permission is not present\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"rating\":1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/collections/{{movie_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections",
+								"{{movie_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete collections - Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 since credentials are valid, but permission is not present\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete collections - Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 403 since credentials are valid, but permission is not present\", function () {",
+									"    pm.response.to.have.status(403);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_user_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections/1",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "public",
+			"item": [
+				{
+					"name": "Create categories-movies",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"movies\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get categories",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categories",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create collections-movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"my movie\",\n    \"category\":\"1\",\n    \"rating\":9,\n    \"image_url\":\"123\",\n    \"video_url\":\"123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/collections",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get collections - all",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {",
+									"    pm.response.to.have.status(401);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections?category=all",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "all"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ott-manager-Delete",
+			"item": [
+				{
+					"name": "Delete collections - Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections/{{movie_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections",
+								"{{movie_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete collections - Show",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{ott_manager_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/collections/{{show_id}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"collections",
+								"{{show_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "ott_user_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImVuQjByMUR3LUYwcHU2QjNpeWxxRiJ9.eyJpc3MiOiJodHRwczovL3N1cmUtb3R0LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2M2JhZDRjMjQxMDg4MjJhMWVmMzg3YmQiLCJhdWQiOiJzdXJlLW90dCIsImlhdCI6MTY3MzE5NDAyNCwiZXhwIjoxNjczMjgwNDI0LCJhenAiOiI3cnQ1elZqVDZoNTFmMEtLdzB2dUFJN0tnSnEzY0Q1eSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsicmVhZDpvdHQiXX0.X0TjYAdcfocO2-d7I-JGiulV4iiZ_pK3h2sY-BZDot28DA1GONUSgozeoyRqhqiO7UYqOOws2YtHGJjz0WZpwUYnAXxawSlqkgm47g6plsjQJwzhqmsQ8ShHmFyE4VBI9i7D0KeQ-0lrKbgveArfkwhvOLkxldUGU3sI9PigFsACT1Pb4fy9FuMCTzhlb9GBgCaan4ueKZ09pC-nnSf561dWh10S3q72rQBmshHdpQO8w8ACjE-7rf2MWq-bjdszWC7WUhmxSFX-ipdnaiYj5N6o0F1XHjNVbiMjIlL9ZUeLYZkIq1CrCrsod7AIzsntvCuyfL3Q3Rf5x6DIAsMnIg",
+			"type": "default"
+		},
+		{
+			"key": "ott_manager_token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImVuQjByMUR3LUYwcHU2QjNpeWxxRiJ9.eyJpc3MiOiJodHRwczovL3N1cmUtb3R0LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2M2JhZDFkM2NkOGIyMmQyZDdjNWJhZWEiLCJhdWQiOiJzdXJlLW90dCIsImlhdCI6MTY3MzE5Mzg4MSwiZXhwIjoxNjczMjgwMjgxLCJhenAiOiI3cnQ1elZqVDZoNTFmMEtLdzB2dUFJN0tnSnEzY0Q1eSIsInNjb3BlIjoiIiwicGVybWlzc2lvbnMiOlsiZGVsZXRlOm90dCIsInBhdGNoOm90dCIsInBvc3Q6b3R0IiwicmVhZDpvdHQiXX0.vi5isoLAcgBUb3EzbbF9hyNlsV2cRoEhnvGt6Ycu27wmYLbhhBXne6LWxqMhyLifuK0x9cxze0qoHrnDgqWXk77M9FPcvrUeT9AXQgT5zDoEH1n6vmz-7xOArRtLlLmo-gPDMZWDZWYCDRuOmnQqQINBMngQmVmnuKoXdTXBepgVFAYhL90caqgrD8xGhED61aSoOdRG6dtZBIgmxK_wHL3IBZcJ3DJBQf-3x3FEm9eFpgx-JcWrsMW6gJqI70G39_BtUkt4a6Tq2znHDiWFT5iNVVlcHxzCFUn67YsiYG370gV1_WXX84ZEgGRpvlAi9fbnP-d4r1Whv_iJZOSpew",
+			"type": "default"
+		}
+	]
+}
