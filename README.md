@@ -99,13 +99,13 @@ Auth0 was set up to manage role-based access control for two users. The API docu
 Users can access API endpoints that have the following permission requirements:
 
 ott user:
-`'read:ott'` - Read categories, collections information
+-`'read:ott'` - Read categories, collections information
 
 ott manager:
-`'read:ott'` - Read categories, collections information
-`'post:ott'` - Create categories, collections information
-`'patch:ott'` - Update categories, collections information
-`'delete:ott'` - Delete categories, collections information
+-`'read:ott'` - Read categories, collections information
+-`'post:ott'` - Create categories, collections information
+-`'patch:ott'` - Update categories, collections information
+-`'delete:ott'` - Delete categories, collections information
 
 ## API Reference
 ### Getting Started
@@ -179,7 +179,7 @@ The API will return below error types when requests fail:
 - General:
     - Returns available categories list.
 - Request Sample: 
-    `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/categories`
+   - `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/categories`
 - Response Sample JSON:
     ```
    {
@@ -205,9 +205,9 @@ The API will return below error types when requests fail:
 - General:
     - Returns available collections for all categories. Collections will be grouped by category.
 - Request Sample: 
-    `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/collections`
+   - `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/collections`
     or
-    `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/collections?category=all`
+   - `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/collections?category=all`
 - Response Sample JSON:
     ```
    {
@@ -255,7 +255,7 @@ The API will return below error types when requests fail:
 - General:
     - Returns available collections for the requested category. 
 - Request Sample: 
-    `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/collections?category={categoryName}`
+   - `curl -H "Authorization: Bearer <ACCESS_TOKEN>" {baseUrl}/collections?category={categoryName}`
 - Response Sample JSON:
     ```
    {
@@ -280,7 +280,7 @@ The API will return below error types when requests fail:
 - General:
     - Add new category or returns category id if already exists.
 - Request Sample: 
-    `curl -X POST {baseUrl}/categories -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"name": "movies"}'`
+   - `curl -X POST {baseUrl}/categories -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"name": "movies"}'`
 - Response Sample JSON:
     ```
    {
@@ -292,7 +292,7 @@ The API will return below error types when requests fail:
 - General:
     - Add new collection for any existing category.
 - Request Sample: 
-    `curl -X POST {baseUrl}/collections -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"title": "my movie", "category":"1","rating":9, "image_url":"123","video_url":"123"}'`
+   - `curl -X POST {baseUrl}/collections -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"title": "my movie", "category":"1","rating":9, "image_url":"123","video_url":"123"}'`
 - Response Sample JSON:
     ```
    {
@@ -311,7 +311,7 @@ The API will return below error types when requests fail:
 - General:
     - Update an collection for an existing collection id.
 - Request Sample: 
-    `curl -X PATCH {baseUrl}/collections/{collection_id} -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"rating":1}'`
+   - `curl -X PATCH {baseUrl}/collections/{collection_id} -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json" -d '{"rating":1}'`
 - Response Sample JSON:
     ```
    {
@@ -330,7 +330,7 @@ The API will return below error types when requests fail:
 - General:
     - Delete an collection for an existing collection id.
 - Request Sample: 
-    `curl -X DELETE {baseUrl}/collections/{collection_id} -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json"`
+   - `curl -X DELETE {baseUrl}/collections/{collection_id} -H "Authorization: Bearer <ACCESS_TOKEN>" -H "Content-Type: application/json"`
 - Response Sample JSON:
     ```
    {
@@ -364,3 +364,6 @@ The backend application has been deployed on Render and can be accessed live at
 ```
 https://ott-app-service.onrender.com
 ```
+
+## Authors
+Yours truly, Suresh Palus
