@@ -53,10 +53,10 @@ This will create all necessary tables and relationships to work with the project
 
 The data model of the project is provided in `models.py` file in the root folder. The following schema for the database and helper methods are used for API behaviour:
 
-- There are 3 tables created: Category, Collection and Season.
-- The Category table includes the fields category type.
-- The Collection table includes the fields title, category, rating, image and video url.
-- The season table includes the fields name, episodes.
+There are 3 tables created: Category, Collection and Season.
+   - The Category table includes the fields category type.
+   - The Collection table includes the fields title, category, rating, image and video url.
+   - The season table includes the fields name, episodes.
 
 ## Running the local development server
 
@@ -99,13 +99,13 @@ Auth0 was set up to manage role-based access control for two users. The API docu
 Users can access API endpoints that have the following permission requirements:
 
 ott user:
--`'read:ott'` - Read categories, collections information
+   -`'read:ott'` - Read categories, collections information
 
 ott manager:
--`'read:ott'` - Read categories, collections information
--`'post:ott'` - Create categories, collections information
--`'patch:ott'` - Update categories, collections information
--`'delete:ott'` - Delete categories, collections information
+   -`'read:ott'` - Read categories, collections information
+   -`'post:ott'` - Create categories, collections information
+   -`'patch:ott'` - Update categories, collections information
+   -`'delete:ott'` - Delete categories, collections information
 
 ## API Reference
 ### Getting Started
